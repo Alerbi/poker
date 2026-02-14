@@ -17,7 +17,8 @@
         - Dealer receives 5 cards face down.<br>
         - After seeing your cards, choose your bet.<br>
         - Press Reveal to show dealer cards.<br>
-        - Best poker hand wins.<br><br>
+        - Best poker hand wins.<br>
+        - Earn 10 000 tokens in total to win!<br><br>
 
         Hand ranking (best → worst):<br>
         Royal Flush, Straight Flush, Four of a Kind,<br>
@@ -30,12 +31,29 @@
 
 <!-- GAME SCREEN -->
 <div id="gameScreen" style="display:none;">
+    <button id="helpBtn" style="position: absolute; top: 10px; right: 10px;">Rules</button>
+
+    <div id="helpOverlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); color:white; text-align:center; padding: 20px; z-index: 100;">
+        <h2>Poker Hand Rankings</h2>
+        <ul style="list-style: none; padding: 0; line-height: 1.6;">
+            <li>Royal Flush: A, K, Q, J, 10 (Same Suit)</li>
+            <li>Straight Flush: 5 in a row (Same Suit)</li>
+            <li>Four of a Kind: 4 cards of same value</li>
+            <li>Full House: 3 of a kind + Pair</li>
+            <li>Flush: 5 cards of same suit</li>
+            <li>Straight: 5 in a row (Any suit)</li>
+            <li>Three of a Kind: 3 cards of same value</li>
+            <li>Two Pair: Two different pairs</li>
+            <li>One Pair: Two cards of same value</li>
+        </ul>
+        <button id="closeHelpBtn" style="margin-top: 20px; padding: 10px 20px;">Back to Game</button>
+    </div>
 
     <h2>Tokens: <span id="tokens">100</span></h2>
 
     <div>
         <input type="number" id="betInput" placeholder="Enter bet" min="1">
-        <button id="revealBtn">Reveal</button>
+        <button id="revealBtn">Bet</button>
         <button id="nextBtn" disabled>Next Round</button>
         <button id="restartBtn">Restart Game</button>
     </div>
@@ -47,6 +65,18 @@
     <div id="dealerCards" class="card-container"></div>
 
     <div id="status"></div>
+
+    <div id="victoryOverlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); color:gold; text-align:center; padding-top:100px;">
+        <h1>🏆 YOU ARE THE CHAMPION! 🏆</h1>
+        <p id="finalTokenCount"></p>
+        <button id="victoryRestartBtn">Play Again</button>
+    </div>
+
+    <div id="loseOverlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(50,0,0,0.9); color:white; text-align:center; padding-top:100px;">
+        <h1>💀 BANKRUPT! 💀</h1>
+        <p>The house always wins...</p>
+        <button id="loseRestartBtn">Try Your Luck Again</button>
+    </div>
 
 </div>
 
